@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.DS_Store
+.idea
+*.bak
+data
+glove
+data-web-snippets
+gen
+data-web-snippets.tar.gz
+glove.6B.zip
