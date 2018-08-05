@@ -61,8 +61,8 @@ print('args: ', args)
 # create trainer
 print("===> creating dataloaders ...")
 end = time.time()
-train_loader = TextClassDataLoader('data/train.tsv', d_word_index, batch_size=args.batch_size)
-val_loader = TextClassDataLoader('data/test.tsv', d_word_index, batch_size=args.batch_size)
+train_loader = TextClassDataLoader('data/aminer_train.tsv', d_word_index, batch_size=args.batch_size)
+val_loader = TextClassDataLoader('data/aminer_test.tsv', d_word_index, batch_size=args.batch_size)
 print('===> dataloader creatin: {t:.3f}'.format(t=time.time()-end))
 
 
