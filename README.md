@@ -6,6 +6,16 @@
 - Cross-entropy Loss + Adam optimizer.
 - Support pretrained word embedding ([GloVe](https://nlp.stanford.edu/projects/glove/)).
 
+## Reference
+
+paper:
+
+Learning to Classify Short and Sparse Text & Web with Hidden Topics from Large-scale Data Collections
+
+code:
+
+https://github.com/keishinkickback/Pytorch-RNN-text-classification
+
 ## Model
 - Embedding --> Dropout --> LSTM(GRU) --> Dropout --> FC.
 
@@ -15,4 +25,20 @@
 
 ```
 python main.py
+```
+
+## Query
+
+```
+python classify.py
+```
+
+## File orgnization
+
+```
+|- main.py 
+|- classify.py 
+|- [dir] glove (word library)
+|- [dir] data (dataset)
+|- [dir] gen (well-trained models)
 ```
