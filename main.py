@@ -30,7 +30,7 @@ parser.add_argument('--save-freq', '-sf', default=10, type=int, metavar='N', hel
 parser.add_argument('--embedding-size', default=50, type=int, metavar='N', help='embedding size')
 parser.add_argument('--hidden-size', default=128, type=int, metavar='N', help='rnn hidden size')
 parser.add_argument('--layers', default=2, type=int, metavar='N', help='number of rnn layers')
-parser.add_argument('--classes', default=8, type=int, metavar='N', help='number of output classes')
+parser.add_argument('--classes', default=3, type=int, metavar='N', help='number of output classes')
 parser.add_argument('--min-samples', default=5, type=int, metavar='N', help='min number of tokens')
 parser.add_argument('--cuda', default=False, action='store_true', help='use cuda')
 parser.add_argument('--glove', default='glove/glove.6B.100d.txt', help='path to glove txt')
@@ -38,7 +38,6 @@ parser.add_argument('--rnn', default='LSTM', choices=['LSTM', 'GRU'], help='rnn 
 parser.add_argument('--mean_seq', default=False, action='store_true', help='use mean of rnn output')
 parser.add_argument('--clip', type=float, default=0.25, help='gradient clipping')
 args = parser.parse_args()
-
 
 # create vocab
 print("===> creating vocabs ...")
@@ -70,7 +69,7 @@ print('===> dataloader creatin: {t:.3f}'.format(t=time.time()-end))
 print("===> creating rnn model ...")
 vocab_size = len(d_word_index)
 model = RNN(vocab_size=vocab_size, embed_size=args.embedding_size, num_output=args.classes, rnn_model=args.rnn,
-            use_last=( not args.mean_seq),
+            use_last=(not args.mean_seq),
             hidden_size=args.hidden_size, embedding_tensor=embed, num_layers=args.layers, batch_first=True)
 print(model)
 
@@ -180,6 +179,8 @@ for epoch in range(1, args.epochs+1):
 
     # save current model
     if epoch % args.save_freq == 0:
-        name_model = 'rnn_{}.pkl'.format(epoch)
+        # name_model = 'rnn_{}.pkl'.format(epoch)
+        name_model = 'rnn_{}.ml'.format(epoch)
         path_save_model = os.path.join('gen', name_model)
-        joblib.dump(model.float(), path_save_model, compress=2)
+        # joblib.dump(model.float(), path_save_model, compress=2)
+        torch.save(model, path_save_model)

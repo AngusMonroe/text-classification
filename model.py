@@ -36,10 +36,10 @@ class RNN(nn.Module):
 
         # rnn module
         if rnn_model == 'LSTM':
-            self.rnn = nn.LSTM( input_size=embed_size, hidden_size=hidden_size, num_layers=num_layers, dropout=0.5,
+            self.rnn = nn.LSTM(input_size=embed_size, hidden_size=hidden_size, num_layers=num_layers, dropout=0.5,
                                 batch_first=True, bidirectional=True)
         elif rnn_model == 'GRU':
-            self.rnn = nn.GRU( input_size=embed_size, hidden_size=hidden_size, num_layers=num_layers, dropout=0.5,
+            self.rnn = nn.GRU(input_size=embed_size, hidden_size=hidden_size, num_layers=num_layers, dropout=0.5,
                                 batch_first=True, bidirectional=True)
         else:
             raise LookupError(' only support LSTM and GRU')
@@ -59,7 +59,7 @@ class RNN(nn.Module):
 
         x_embed = self.encoder(x)
         x_embed = self.drop_en(x_embed)
-        packed_input = pack_padded_sequence(x_embed, seq_lengths.cpu().numpy(),batch_first=True)
+        packed_input = pack_padded_sequence(x_embed, seq_lengths.cpu().numpy(), batch_first=True)
 
         # r_out shape (batch, time_step, output_size)
         # None is for initial hidden state

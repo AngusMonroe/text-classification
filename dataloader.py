@@ -71,6 +71,7 @@ class TextClassDataLoader(object):
         batch = []
         n = 0
         while n < self.batch_size:
+            # _index = self.indices[self.index]
             _index = self.indices[self.index]
             batch.append(self.samples[_index])
             self.index += 1
