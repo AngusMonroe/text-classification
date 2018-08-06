@@ -13,8 +13,9 @@ print(model)
 
 v_builder = GloveVocabBuilder(path_glove='glove/glove.6B.100d.txt')
 d_word_index, embed = v_builder.get_word_index()
-file = open("data/input.txt", "r", encoding='utf8')
-train_loader = TextClassDataLoader('data/input.txt', d_word_index, batch_size=1)
+
+def get_sentence():
+    train_loader = TextClassDataLoader('data/input.txt', d_word_index, batch_size=1)
 
 # seq = 'Mouse journal related to consumption'
 # seq_tensor = torch.LongTensor(train_loader.samples[0][1])
@@ -26,10 +27,11 @@ train_loader = TextClassDataLoader('data/input.txt', d_word_index, batch_size=1)
 # print(output)
 
 
-print('Start predict...')
-print(train_loader.samples)
-for i, (seq, target, seq_lengths) in enumerate(train_loader):
-    output = model(seq, seq_lengths)
-    arr = output[0].data.numpy().tolist()
-    print(arr)
-    print(arr.index(max(arr)))
+    # print('Start predict...')
+    # print(train_loader.samples)
+    for i, (seq, target, seq_lengths) in enumerate(train_loader):
+        output = model(seq, seq_lengths)
+        arr = output[0].data.numpy().tolist()
+        print(arr)
+        print(arr.index(max(arr)))
+    return arr.index(max(arr))

@@ -29,9 +29,26 @@ python main.py
 
 ## Query
 
-```
-python classify.py
-```
+1. run the server
+	
+	```
+	python server.py
+	```
+	
+2. GET Method:
+	
+	```
+	http://166.111.5.228:5010/query/<query>
+	```
+	
+3. Return in json, Example:
+
+	```
+	http://166.111.5.228:5010/query/John
+	{"tag": "0"}
+	```
+	
+	0-学者，1-文章，2-会议
 
 ## File orgnization
 
