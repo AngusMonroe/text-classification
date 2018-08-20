@@ -17,5 +17,5 @@ if __name__ == '__main__':
         os.mkdir('glove')
 
     subprocess.call(['bash', '-c', 'mv glove.6B.*d.txt glove'])
-    create_tsv_file('data-web-snippets/train.txt', 'data/train.tsv')
-    create_tsv_file('data-web-snippets/test.txt', 'data/test.tsv')
+    # create_tsv_file('data-web-snippets/train.txt', 'data/train.tsv')
+    # create_tsv_file('data-web-snippets/test.txt', 'data/test.tsv')

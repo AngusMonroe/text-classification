@@ -19,6 +19,14 @@ https://github.com/keishinkickback/Pytorch-RNN-text-classification
 ## Model
 - Embedding --> Dropout --> LSTM(GRU) --> Dropout --> FC.
 
+## Preprocessing
+
+- download GloVe embeddings.
+
+```
+python preprocess.py
+```
+
 ## Training
 
 - The following command starts training. Run it with ```-h``` for optional arguments.
