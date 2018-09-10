@@ -46,17 +46,17 @@ python main.py
 2. GET Method:
 	
 	```
-	http://166.111.5.228:5010/query/<query>
+	http://166.111.5.228:5012/query/<query>
 	```
 	
 3. Return in json, Example:
 
 	```
-	http://166.111.5.228:5010/query/John
+	http://166.111.5.228:5012/query/John
 	{"tag": "0"}
 	```
 	
-	0-学者，1-文章，2-会议
+	0-学者，1-文章，2-会议，3-chitchat
 
 ## File orgnization
 
