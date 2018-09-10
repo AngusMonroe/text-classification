@@ -22,9 +22,10 @@ def ans(query):
     file = open('data/input.txt', "w", encoding="utf8")
     file.write('label\tbody\n')
     file.write(str(0) + '\t' + query + '\n')
+    file.write(str(0) + '\t' + query + '\n')
     file.close()
     tag = classify.get_sentence()
-    uniq_dic = {'tag': str(tag)}
+    uniq_dic = {'intent': str(tag)}
     end = time.time()
     print('[LOG INFO] parse time:', end-start)
     # dic['entities'] =  or_tags
@@ -45,5 +46,5 @@ def QA(query):
         return 'hello world'
 
 if __name__ == '__main__':
-    app.debug=True
+    app.debug = True
     app.run(host='0.0.0.0', port=5010)

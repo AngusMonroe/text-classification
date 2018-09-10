@@ -73,7 +73,7 @@ class RNN(nn.Module):
             col_indices = col_indices.cuda()
 
         if self.use_last:
-            last_tensor=out_rnn[row_indices, col_indices, :]
+            last_tensor = out_rnn[row_indices, col_indices, :]
         else:
             # use mean
             last_tensor = out_rnn[row_indices, :, :]

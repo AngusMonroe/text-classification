@@ -99,8 +99,8 @@ if __name__ == "__main__":
 
     v_builder = GloveVocabBuilder()
     d, vec = v_builder.get_word_index()
-    print (d['__UNK__'])
+    print(d['__UNK__'])
     for k, v in sorted(d.items())[:100]:
-        print (k,v)
+        print(k,v)
         print(v)
 

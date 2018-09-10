@@ -27,7 +27,7 @@ def create_tsv_file(path_in, path_out):
 
 def _tokenize(text):
     # return [x.lower() for x in nltk.word_tokenize(text)]
-    return [ x.lower() for x in text.split() ]
+    return [x.lower() for x in text.split()]
 
 
 ''' from https://github.com/pytorch/examples/blob/master/imagenet/main.py'''
@@ -98,13 +98,14 @@ def make_data(path):
     for i, line in enumerate(lines):
         # train: test = 4: 1
         word = line.split()
-        tag = -1
-        if word[0] == '搜学者':
-            tag = 0
-        elif word[0] == '搜文章':
-            tag = 1
-        elif word[0] == '搜会议':
-            tag = 2
+        tag = word[0]
+        # tag = -1
+        # if word[0] == '搜学者':
+        #     tag = 0
+        # elif word[0] == '搜文章':
+        #     tag = 1
+        # elif word[0] == '搜会议':
+        #     tag = 2
         sentence = ''
         for j in range(1, len(word)):
             sentence += word[j] + ' '
@@ -121,4 +122,4 @@ def make_data(path):
     print("done")
 
 if __name__ == '__main__':
-    make_data('data/data.txt')
+    make_data('/Users/xujiaxing/Downloads/mixed_data/intent.txt')

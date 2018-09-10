@@ -22,8 +22,14 @@ class TextClassDataLoader(object):
 
         # read file
         df = pd.read_csv(path_file, delimiter='\t')
+        print('#df# is:')
+        print(df)
         df['body'] = df['body'].apply(ut._tokenize)
+        print('#df# is:')
+        print(df)
         df['body'] = df['body'].apply(self.generate_indexifyer())
+        print('#df# is:')
+        print(df)
         self.samples = df.values.tolist()
 
         # for batch
@@ -48,12 +54,15 @@ class TextClassDataLoader(object):
     def generate_indexifyer(self):
 
         def indexify(lst_text):
+            print('#lst_text# is:')
+            print(lst_text)
             indices = []
             for word in lst_text:
                 if word in self.word_to_index:
                     indices.append(self.word_to_index[word])
                 else:
                     indices.append(self.word_to_index['__UNK__'])
+            print(indices)
             return indices
 
         return indexify
@@ -64,7 +73,7 @@ class TextClassDataLoader(object):
         size = len(batch_s[-1])
         for i, x in enumerate(batch_x):
             missing = size - len(x)
-            batch_x[i] =  batch_x[i] + [0 for _ in range(missing)]
+            batch_x[i] = batch_x[i] + [0 for _ in range(missing)]
         return batch_x
 
     def _create_batch(self):
@@ -73,12 +82,17 @@ class TextClassDataLoader(object):
         while n < self.batch_size:
             # _index = self.indices[self.index]
             _index = self.indices[self.index]
+            print(_index)
+            print(self.samples[_index])
             batch.append(self.samples[_index])
             self.index += 1
             n += 1
         self.batch_index += 1
 
+        print(batch)
         label, string = tuple(zip(*batch))
+        print(type(string))
+        print(string)
 
         # get the length of each seq in your batch
         seq_lengths = torch.LongTensor(list(map(len, string)))
