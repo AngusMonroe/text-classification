@@ -76,8 +76,8 @@ def adjust_learning_rate(lr, optimizer, epoch):
 
 def make_data(path):
     data_file = open(path, "r", encoding="utf8")
-    train_file = open("data/aminer_train.tsv", "w", encoding="utf8")
-    test_file = open("data/aminer_test.tsv", "w", encoding="utf8")
+    train_file = open("data/en/aminer_train.tsv", "w", encoding="utf8")
+    test_file = open("data/en/aminer_test.tsv", "w", encoding="utf8")
 
     lines = data_file.readlines()
     num = len(lines)
@@ -99,13 +99,13 @@ def make_data(path):
         # train: test = 4: 1
         word = line.split()
         tag = word[0]
-        # tag = -1
-        # if word[0] == '搜学者':
-        #     tag = 0
-        # elif word[0] == '搜文章':
-        #     tag = 1
-        # elif word[0] == '搜会议':
-        #     tag = 2
+        tag = -1
+        if word[0] == '搜学者':
+            tag = 0
+        elif word[0] == '搜文章':
+            tag = 1
+        elif word[0] == '搜会议':
+            tag = 2
         sentence = ''
         for j in range(1, len(word)):
             sentence += word[j] + ' '
@@ -122,4 +122,4 @@ def make_data(path):
     print("done")
 
 if __name__ == '__main__':
-    make_data('/Users/xujiaxing/Downloads/mixed_data/intent.txt')
+    make_data('data/en/log.txt')

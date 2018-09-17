@@ -52,11 +52,10 @@ class VocabBuilder(object):
 
         """
         # truncate low fq word
-        _word_count = filter(lambda x:  min_sample<=x[1], self.word_count.items())
-        tokens = zip(*_word_count)[0]
-
+        _word_count = filter(lambda x:  min_sample <= x[1], self.word_count.items())
+        tokens = list(zip(*_word_count))[0]
         # inset padding and unknown
-        self.word_to_index = { tkn: i for i, tkn in enumerate([padding_marker, unknown_marker] + sorted(tokens))}
+        self.word_to_index = {tkn: i for i, tkn in enumerate([padding_marker, unknown_marker] + sorted(tokens))}
         print('Turncated vocab size:{} (removed:{})'.format(len(self.word_to_index),
                                                             len(self.word_count) - len(self.word_to_index)))
         return self.word_to_index, None
@@ -101,6 +100,6 @@ if __name__ == "__main__":
     d, vec = v_builder.get_word_index()
     print(d['__UNK__'])
     for k, v in sorted(d.items())[:100]:
-        print(k,v)
+        print(k, v)
         print(v)
 
