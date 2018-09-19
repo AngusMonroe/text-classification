@@ -27,6 +27,15 @@ https://github.com/keishinkickback/Pytorch-RNN-text-classification
 python preprocess.py
 ```
 
+## Data Format
+
+train data at `./data/aminer_train.tsv`
+
+```
+label	sentence
+<lable>	<sentence>
+```
+
 ## Training
 
 - The following command starts training. Run it with ```-h``` for optional arguments.
